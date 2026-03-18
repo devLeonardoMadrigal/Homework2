@@ -176,7 +176,99 @@ myCustomQueue.async{
 }
 
 
+
+print("---------------------------------------------")
+print("4?.MultiThreadin -  Operation Queue 3.Async Await, SwiftConcunancy - Actor, async let,")
 /*
  Operation Queue3.Async Await,
  SwiftConcunancy - Actor, async let,
  */
+let operationQueue = OperationQueue()
+operationQueue.maxConcurrentOperationCount = 2
+
+let operation1 = BlockOperation{
+    for i in 0...10 {
+        print("Task 1 execution... progress: \(i*10)")
+    }
+}
+let operation2 = BlockOperation{
+    for i in 0...10 {
+        print("Task 2 execution... progress: \(i*10)")
+    }
+}
+
+let operation3 = BlockOperation{
+    for i in 0...10 {
+        print("Task 3 execution... progress: \(i*10)")
+    }
+}
+operation1.addDependency(operation3)
+
+operationQueue.addOperations([operation1, operation2, operation3], waitUntilFinished: false)
+
+
+print("---------------------------------------------")
+print("4?.MultiThreadin -  Async Await, SwiftConcunancy - Actor, async let,")
+
+func fetchUserData() async throws -> String {
+    return "{result:{name:Leo}}"
+}
+
+Task{
+    async let userData = fetchUserData()
+    
+    do{
+        let data = try await userData
+        print("User Data: \(data)")
+    } catch{
+        print("ERROR \(error)")
+    }
+}
+print("---------------------------------------------")
+print("4?.MultiThreadin - Actor")
+
+
+actor BankAccount{
+    var balance: Int = 0
+    
+    func deposit(money: Int){
+        print("Trying to deposit $\(money) into a $\(balance) account...")
+        balance += money
+        print("     $\(money) deposit")
+        print("     Balance: $\(balance) ")
+    }
+    
+    func withdraw(money: Int){
+        print("Trying to withdraw $\(money) from a $\(balance) account...")
+
+        if(balance - money < 0){
+            print("     Not enough funds!")
+        }else{
+            balance -= money
+            print("     $\(money) withdrawn")
+            print("     Balance: $\(balance) ")
+        }
+    }
+}
+
+let sharedBankAccount = BankAccount()
+
+Task{
+    await sharedBankAccount.withdraw(money: 100)
+}
+Task{
+    await sharedBankAccount.deposit(money: 100)
+}
+Task{
+    await sharedBankAccount.withdraw(money: 50)
+}
+Task{
+    await sharedBankAccount.withdraw(money: 60)
+}
+Task{
+    await sharedBankAccount.withdraw(money: 50)
+}
+
+
+
+
