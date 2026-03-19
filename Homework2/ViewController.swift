@@ -8,12 +8,28 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var learningLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setUIValues()
     }
+    
 
 
+
+    @IBAction func signInButtonClicked(_ sender: Any) {
+        print("Button Clicked")
+    }
+    
+    func setUIValues(){
+        welcomeLabel.text = "Welcome"
+        learningLabel.text = "Welcome"
+        
+    }
+    
 }
 

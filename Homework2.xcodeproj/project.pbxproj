@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8085CD802F6C361E0013C087 /* GridScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8085CD7F2F6C361E0013C087 /* GridScreen.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		8085CD7F2F6C361E0013C087 /* GridScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridScreen.swift; sourceTree = "<group>"; };
 		80AEE68B2F6B27BD0035AC06 /* Homework2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homework2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +50,7 @@
 		80AEE6822F6B27BD0035AC06 = {
 			isa = PBXGroup;
 			children = (
+				8085CD7F2F6C361E0013C087 /* GridScreen.swift */,
 				80AEE68D2F6B27BD0035AC06 /* Homework2 */,
 				80AEE68C2F6B27BD0035AC06 /* Products */,
 			);
@@ -132,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8085CD802F6C361E0013C087 /* GridScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
